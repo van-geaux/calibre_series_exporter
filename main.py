@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 import os
 from pathlib import Path
 import re
@@ -28,6 +28,7 @@ SELECT
     , c.series
     , d.format
     , d.filename
+    , a.last_modified
 FROM books a
 LEFT JOIN (
     SELECT
@@ -84,6 +85,8 @@ except Exception as e:
 library_path = config.get('calibre library path')
 destination_root = config.get('destination root path')
 
+current_date = datetime.now()
+
 logger.info('Copying calibre books to destination path:')
 print('')
 try:
@@ -97,6 +100,7 @@ try:
             series = book[4]
         format = book[5].lower()
         filename = book[6]
+        last_modified = datetime.strptime(book[7], '%Y-%m-%d %H:%M:%S.%f')
 
         series_dir = series if series else '[no series]'
         
@@ -118,10 +122,9 @@ try:
 
         try:
             if os.path.exists(destination_path):
-                file_mod_time = datetime.datetime.fromtimestamp(os.path.getmtime(destination_path))
-                time_difference = datetime.datetime.now() - file_mod_time
+                days_difference = (current_date - last_modified).days
 
-                if time_difference.days < int(config.get('days to overwrite')):
+                if days_difference <= int(config.get('days to overwrite')):
                     shutil.copy2(original_path, destination_path)
                     logger.info(f"Success, file is not older than {config.get('days to overwrite')} days old and overwritten")
                 else:

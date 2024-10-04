@@ -3,7 +3,7 @@ calibre library path: '/volume1/data/media/books/calibre'
 
 destination root path: '/volume1/data/media/books/calibre-series'
 
-# file older than n days will not be overwritten
+# file modified in the last n days in calibre will be overwritten
 days to overwrite: 7
 
 log level: 
