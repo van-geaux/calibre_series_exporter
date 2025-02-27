@@ -1,9 +1,10 @@
 # metadata.db location
 calibre library path: '/volume1/data/media/books/calibre'
 
-destination root path: '/volume1/data/media/books/calibre-series'
+destination root path: '/volume1/data/media/books/calibre_series'
 
-# file modified in the last n days in calibre will be overwritten
-days to overwrite: 7
+# every books without a series will be put here
+one shot folder name: '_oneshots'
 
+# Console default to info, file default to warning. Set to change both
 log level: 
