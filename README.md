@@ -1,4 +1,4 @@
-# 📚 Calibre Library Hardlink Organizer  
+# 📚 Calibre Library Series Exporter
 
 ## What is this?  
 
