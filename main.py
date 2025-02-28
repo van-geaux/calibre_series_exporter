@@ -167,7 +167,7 @@ def clear_broken_link(destination_root: str) -> None:
                 except OSError as e:
                     logger.info(f"Error removing broken folder: {folder_path}: {e}")
 
-def create_link(config: dict, data_table:dict, library_path:str, destination_root: str) -> None:
+def create_link(config: dict, data_table:list, library_path:str, destination_root: str) -> None:
     logger.info('Checking destination path')
     try:
         if not os.path.exists(destination_root):
@@ -243,7 +243,7 @@ def create_link(config: dict, data_table:dict, library_path:str, destination_roo
         logger.error(e)
         sys.exit(1)
 
-def delete_series_book(config, data_table, destination_root):
+def delete_series_book(config: dict, data_table: list, destination_root: str):
     # delete disrepancy in series name vs series folder
     existing_folders = [f for f in os.listdir(destination_root) if os.path.isdir(os.path.join(destination_root, f))]
     existing_series = list({sanitize_filename(item['series_title']) for item in data_table if sanitize_filename(item['series_title']) != 'no_name'})

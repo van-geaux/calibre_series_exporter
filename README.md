@@ -1,38 +1,75 @@
-# What is this
+# 📚 Calibre Library Hardlink Organizer  
 
-Hardlink books from calibre library to a new directory
+## What is this?  
 
-Instead of using calibre directory structure, books of the same series will be put together inside their respective series directory
+This script organizes books from your Calibre library into a more structured directory based on their series. Instead of using Calibre's default structure, books from the same series are placed in a single folder.  
 
-Source: '/path/to/calibre/library/{author name}/{book name}/{book files}'
-Destination: '/path/to/new/library/{series name}/{book files}'
+### 📂 Source Structure:  
+```
+/path/to/calibre/library/{author}/{book}/{book files}
+```
 
-Final book file name will be: '{book name on calibre}.{format}'
+### 📂 Destination Structure:  
+```
+/path/to/new/library/{series}/{book files}
+```
 
-i.e. 'Overlord, Vol. 6 (light novel).epub'
+The final book filename format:  
+```
+{book name on calibre}.{format}
+```
 
-# Features
-1. Extract books from calibre and put them in their respective series folders
-2. Books without a series name will all be put in a configurable folder
+**Example:**  
+A book in Calibre named `Overlord, Vol. 6 (light novel).epub` will be hardlinked as:  
+```
+/path/to/new/library/Overlord/Overlord, Vol. 6 (light novel).epub
+```
 
-# How to use
-1. Copy the repo
-2. Change the config.yml to your need
-3. Create a virtual environment (optional)
+## ✨ Features  
+✅ Organizes books into series-based folders  
+✅ Keeps books without a series name in a configurable folder  
+✅ Uses hardlinks to avoid duplicating files  
 
-   `python -m venv env`
-   
-4. Enter the environment
-   
-   `source env/bin/activate` or `env\Scripts\activate` if on windows
-   
-5. Install dependencies (only pyyaml)
-   
-   `pip install -r requirements.txt` or just simply `pip install pyyaml`
-   
-6. Run the script `python main.py`
+## 🚀 How to Use  
 
-# Why?
+1. **Clone the repository**  
+   ```sh
+   git clone https://github.com/your-repo-name.git
+   cd your-repo-name
+   ```  
 
-Because some of my family members and friends prefers to use Komga and it create series based on series folder instead of using books' metadata.
-I also like that directory structure better, make searching for books easier because I often don't care about who wrote them.
+2. **Edit the configuration**  
+   Modify `config.yml` to set your library paths and preferences.  
+
+3. **(Optional) Create a virtual environment**  
+   ```sh
+   python -m venv env
+   ```  
+
+4. **Activate the virtual environment**  
+   - On macOS/Linux:  
+     ```sh
+     source env/bin/activate
+     ```  
+   - On Windows:  
+     ```sh
+     env\Scripts\activate
+     ```  
+
+5. **Install dependencies**  
+   ```sh
+   pip install -r requirements.txt
+   ```  
+   _or just:_  
+   ```sh
+   pip install pyyaml
+   ```  
+
+6. **Run the script**  
+   ```sh
+   python main.py
+   ```  
+
+## 🤔 Why?  
+
+Some of my family members and friends use **Komga**, which organizes books based on folder structure rather than metadata. I also find this structure more convenient since I often search for books by series rather than by author.  
